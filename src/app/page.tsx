@@ -92,19 +92,21 @@ export default function Home() {
       {/* Navigation latérale */}
       <Sidebar />
 
-      <main className="flex-1 p-8 bg-background">
+      {/* pt-20 sur mobile pour laisser de la place au bouton hamburger fixe */}
+      <main className="flex-1 p-4 pt-20 md:p-8 md:pt-8 bg-background">
         {/* Titre principal de la page */}
-        <h1 className="title-section text-2xl text-text-primary mb-6">
+        <h1 className="title-section text-xl md:text-2xl text-text-primary mb-6">
           Simulateur intérêts composés
         </h1>
 
-        <div className="flex gap-6">
-          {/* Colonne gauche - formulaire de simulation */}
-          <div className="w-96">
+        {/* flex-col par défaut (mobile) → flex-row à partir de md (desktop) */}
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Colonne formulaire - largeur fixe sur desktop, pleine largeur sur mobile */}
+          <div className="w-full md:w-96">
             <SimulationForm onSubmit={handleFormSubmit} />
           </div>
 
-          {/* Colonne droite - résultats (chargement / erreur / info / données) */}
+          {/* Colonne résultats (chargement / erreur / info / données) */}
           <div className="flex-1">
             {/* Message affiché pendant le calcul */}
             {loading && (
