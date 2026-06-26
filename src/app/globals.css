@@ -1,18 +1,39 @@
 @import "tailwindcss";
 
-/* Variables de couleur - seront personnalisées en Phase 4 
-   avec la palette S'investir (fond bleu marine, doré, etc.) */
+/* Variables de couleur brutes - identité visuelle S'investir */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a1628;
+  --surface: #0f1f38;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --gold: #d4af37;
+  --accent-blue: #3b82f6;
+  --success: #22c55e;
 }
 
+/* Déclaration des couleurs personnalisées pour Tailwind
+   Permet d'utiliser bg-background, text-gold, etc. dans les classes */
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border-color);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-gold: var(--gold);
+  --color-accent-blue: var(--accent-blue);
+  --color-success: var(--success);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--text-primary);
+}
+
+/* Classe utilitaire pour les titres style S'investir
+   Majuscules, espacées, utilisée sur tous les titres de section */
+.title-section {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
 }
