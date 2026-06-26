@@ -33,21 +33,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Test calcul DCA</h1>
-
-      {loading && <p>Chargement...</p>}
-
-      {result && (
-        <div className="space-y-2">
-          <p>Investi total : {result.totalInvested.toFixed(2)} €</p>
-          <p>Acquis total : {result.totalAcquired.toFixed(8)} BTC</p>
-          <p>Prix moyen : {result.averagePrice.toFixed(2)} €</p>
-          <p>Capital final : {result.finalCapital.toFixed(2)} €</p>
-          <p>Performance : {result.performancePercent.toFixed(2)} %</p>
-          <p>Points d&apos;historique : {result.history.length}</p>
-        </div>
-      )}
+    <div className="p-8 bg-background min-h-screen">
+      <h1 className="text-2xl font-bold mb-4 text-gold">Test Design System</h1>
+      <h2 className="title-section text-2xl text-text-primary">
+        Simulateur intérêts composés
+      </h2>
+      <div className="bg-surface border border-border rounded-lg p-4">
+        <p className="text-text-primary">Texte principal</p>
+        <p className="text-text-secondary">Texte secondaire</p>
+        <p className="text-accent-blue">Accent bleu</p>
+        <p className="text-success">Succès (vert)</p>
+      </div>
     </div>
   );
 }
