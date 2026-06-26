@@ -1,19 +1,38 @@
 "use client";
 
+import KeyMetrics from "@/components/KeyMetrics";
 import Sidebar from "@/components/Sidebar";
 import SimulationForm from "@/components/SimulationForm";
+import { getHistoricalPrices } from "@/services/binanceApi";
+import {
+  calculateDCA,
+  type Frequency,
+  type SimulationResult,
+} from "@/services/dcaCalculator";
+import { useState } from "react";
 
 export default function Home() {
-  // Pour l'instant on affiche juste les paramètres choisis dans la console
-  // On branchera le vrai calcul DCA à l'étape suivante
-  function handleFormSubmit(params: {
+  const [result, setResult] = useState<SimulationResult | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  async function handleFormSubmit(params: {
     symbol: string;
     amount: number;
-    frequency: string;
+    frequency: Frequency;
     startDate: Date;
     endDate: Date;
   }) {
-    console.log("Paramètres soumis :", params);
+    setLoading(true);
+
+    const prices = await getHistoricalPrices(
+      params.symbol,
+      params.startDate,
+      params.endDate,
+    );
+
+    const simulationResult = calculateDCA(prices, params);
+    setResult(simulationResult);
+    setLoading(false);
   }
 
   return (
@@ -23,8 +42,18 @@ export default function Home() {
         <h1 className="title-section text-2xl text-text-primary mb-6">
           Simulateur intérêts composés
         </h1>
-        <div className="max-w-md">
-          <SimulationForm onSubmit={handleFormSubmit} />
+
+        <div className="flex gap-6">
+          <div className="w-96">
+            <SimulationForm onSubmit={handleFormSubmit} />
+          </div>
+
+          <div className="flex-1">
+            {loading && (
+              <p className="text-text-secondary">Calcul en cours...</p>
+            )}
+            {result && <KeyMetrics result={result} />}
+          </div>
         </div>
       </main>
     </div>
