@@ -2,6 +2,7 @@
 
 import KeyMetrics from "@/components/KeyMetrics";
 import Sidebar from "@/components/Sidebar";
+import SimulationChart from "@/components/SimulationChart";
 import SimulationForm from "@/components/SimulationForm";
 import { getHistoricalPrices } from "@/services/binanceApi";
 import {
@@ -53,6 +54,11 @@ export default function Home() {
               <p className="text-text-secondary">Calcul en cours...</p>
             )}
             {result && <KeyMetrics result={result} />}
+            {result && (
+              <div className="mt-6">
+                <SimulationChart history={result.history} />
+              </div>
+            )}
           </div>
         </div>
       </main>
