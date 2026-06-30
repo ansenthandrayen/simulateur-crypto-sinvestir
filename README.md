@@ -2,7 +2,7 @@
 
 Simulateur d'investissement DCA (Dollar Cost Averaging) en cryptomonnaies, conçu pour s'intégrer à la suite d'outils S'investir.
 
-🔗 **Démo en ligne** : [simulateur-crypto-sinvestir.vercel.app](https://simulateur-crypto-sinvestir.vercel.app)
+🔗 **Démo en ligne** : [simulateur-crypto-sinvestir.vercel.app](https://simulateur-crypto-sinvestir-olive.vercel.app/)
 
 ![Simulateur Screenshot](./screenshot.png)
 
