@@ -74,7 +74,7 @@ export default function SimulationChart({ history }: SimulationChartProps) {
 
           {/* Info-bulle au survol */}
           <Tooltip
-            formatter={(value: number) => formatEuro(value)}
+            formatter={(value) => formatEuro(Number(value))}
             contentStyle={{
               backgroundColor: "var(--surface)",
               border: "1px solid var(--border-color)",
